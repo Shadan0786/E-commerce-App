@@ -1,8 +1,7 @@
-/* --- AUTHENTICATION CHECK --- */
+
 const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
 
-// Check immediately before doing anything else
 if (!token || role !== "admin") {
     alert("Access Denied: Admins only");
     window.location.href = "login.html";
@@ -14,11 +13,11 @@ function logout() {
     window.location.href = "login.html";
 }
 
-/* --- DOM ELEMENTS --- */
+
 const form = document.getElementById("productForm");
 const categorySelect = document.getElementById("category");
 
-/* --- LOAD CATEGORIES --- */
+
 async function loadCategories() {
     try {
         const res = await fetch("http://localhost:5000/api/categories");
@@ -26,11 +25,11 @@ async function loadCategories() {
         
         const cats = await res.json();
         
-        // Clear and add placeholder
+        
         categorySelect.innerHTML = `<option value="">-- Select a Category --</option>`;
         
         cats.forEach(c => {
-            // FIX: Ensure value is the database _id
+
             categorySelect.innerHTML += `<option value="${c._id}">${c.name}</option>`;
         });
     } catch (err) {
@@ -39,18 +38,16 @@ async function loadCategories() {
 }
 loadCategories();
 
-/* --- ADD PRODUCT --- */
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // 1. Capture values
     const name = document.getElementById("name").value;
     const price = document.getElementById("price").value;
     const description = document.getElementById("description").value;
-    const categoryId = document.getElementById("category").value; // This is the ID
+    const categoryId = document.getElementById("category").value; 
     const imageFile = document.getElementById("image").files[0];
 
-    // 2. VALIDATION: Prevent the "Cast to ObjectId failed" error
     if (!categoryId) {
         alert("Please select a category!");
         return;
@@ -60,12 +57,12 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
-    // 3. Prepare FormData
+    
     const data = new FormData();
     data.append("name", name);
     data.append("price", price);
     data.append("description", description);
-    data.append("category", categoryId); // Sending the 24-char hex string
+    data.append("category", categoryId); 
     data.append("image", imageFile);
 
     try {
@@ -73,8 +70,7 @@ form.addEventListener("submit", async (e) => {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token}`
-                // IMPORTANT: Do NOT add 'Content-Type' here. 
-                // Browser sets it automatically for FormData.
+                
             },
             body: data
         });
@@ -85,7 +81,7 @@ form.addEventListener("submit", async (e) => {
             alert("Product added successfully! 🚀");
             form.reset();
         } else {
-            // This will now catch the error message from your backend try/catch
+            
             alert("Error: " + (result.message || result.error));
         }
     } catch (err) {
