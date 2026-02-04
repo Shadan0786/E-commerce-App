@@ -1,4 +1,4 @@
-// If already logged in
+
 if (localStorage.getItem("token")) {
   window.location.href = "index.html";
 }
@@ -27,11 +27,10 @@ async function login() {
     return;
   }
 
-  // Save token & role
+
   localStorage.setItem("token", data.token);
   localStorage.setItem("role", data.user.role);
 
-  // Redirect based on role
   if (data.user.role === "admin") {
     window.location.href = "admin.html";
   } else {
