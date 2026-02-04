@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-Commerce</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #d6a6a6;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+
+        }
+
+        h4,
+        p {
+            text-align: center;
+            align-content: center;
+
+        }
+
+
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+
+        }
+
+        nav {
+            height: 6vh;
+            width: full;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 30px;
+        }
+
+        .search {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            width: 200px;
+            align-content: center;
+        }
+
+        #categoryFilter {
+            padding: 10px;
+            width: fit-content;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .twobuttons a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #Admin {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h2>Products</h2>
+        <div class="twobuttons">
+            <button id="Admin"><a href="admin.html">Admin</a></button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    <div class="search">
+
+        <input type="text" id="search" placeholder="Search products..." />
+
+        <select id="categoryFilter"></select>
+    </div>
+
+
+    <div class="products" id="products"></div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

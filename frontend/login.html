@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #d6a6a6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: full;
+    }
+
+    .box {
+      height: 300px;
+      width: 500px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input {
+      width: 450px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100px;
+      padding: 10px;
+      background: red;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+
+    }
+
+    a {
+      text-align: center;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <a href="signup.html">Create new account</a>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+
+</html>

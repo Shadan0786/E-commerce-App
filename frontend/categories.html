@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Category Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #d6a6a6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: full;
+        }
+
+        .box {
+            height: 300px;
+            width: 500px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            width: 450px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 150px;
+            padding: 10px;
+            background: red;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>Add New Category</h2>
+        <input type="text" id="categoryName" placeholder="Enter Category Name (e.g. Shoes)" />
+        <button onclick="addCategory()">Add Category</button>
+        <br><br>
+        <a href="admin.html">⬅️ Back to Product Management</a>
+    </div>
+
+    <script>
+        async function addCategory() {
+            const name = document.getElementById("categoryName").value;
+            const token = localStorage.getItem("token");
+
+            if (!name) return alert("Enter a name");
+
+            const res = await fetch("http://localhost:5000/api/categories", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ name })
+            });
+
+            if (res.ok) {
+                alert("Category Created! 🚀");
+                document.getElementById("categoryName").value = "";
+            } else {
+                const data = await res.json();
+                alert("Error: " + data.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

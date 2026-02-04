@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #d6a6a6;
+    }
+
+    nav {
+      height: 6vh;
+      width: full;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+
+    }
+
+    #productForm{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    #name,#price,#category{
+      width: 300px;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      text-align: center;
+      align-content: center;
+    }
+
+    #category{
+      width: 320px;
+      padding: 10px;
+      
+      border: none;
+      border-radius: 10px;
+      text-align: center;
+      align-content: center;
+    }
+
+    textarea{
+      width: 500px;
+      height: 200px;
+    }
+    #image{
+      width: 300px;
+      border: none;
+    
+    }
+    #Add{
+      width: 100px;
+      background-color: red;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+    .twobuttons a{
+      text-decoration: none;
+      color: white;
+
+
+    }
+    #Dashboard{
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h2>Add Product</h2>
+    <div class="twobuttons">
+      <button id="Dashboard"><a href="index.html">DashBoard</a></button>
+      <button onclick="logout()" style="float: right;">Logout</button>
+    </div>
+  </nav>
+
+  <form id="productForm">
+    <input placeholder="Name" id="name" />
+    <input placeholder="Price" id="price" />
+    <select id="category"><a href="categories.html">create new category</a></select>
+    <textarea placeholder="Description" id="description"></textarea>
+    <input type="file" id="image" />
+    <button id="Add">Add</button>
+    <a href="categories.html">create new category</a>
+  </form>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>
