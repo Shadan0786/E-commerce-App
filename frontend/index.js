@@ -10,7 +10,7 @@ const categorySelect = document.getElementById("categoryFilter");
 
 let allProducts = [];
 
-/* FETCH CATEGORIES */
+
 async function loadCategories() {
   const res = await fetch("http://localhost:5000/api/categories");
   const categories = await res.json();
@@ -21,7 +21,7 @@ async function loadCategories() {
   });
 }
 
-/* FETCH PRODUCTS */
+
 async function loadProducts() {
   const res = await fetch("http://localhost:5000/api/products");
   allProducts = await res.json();
@@ -42,7 +42,6 @@ function renderProducts(products) {
   });
 }
 
-/* SEARCH */
 searchInput.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase();
   renderProducts(allProducts.filter(p =>
@@ -50,7 +49,7 @@ searchInput.addEventListener("input", () => {
   ));
 });
 
-/* FILTER */
+
 categorySelect.addEventListener("change", () => {
   const value = categorySelect.value;
   if (!value) return renderProducts(allProducts);
